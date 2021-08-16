@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Setting</title>
+</head>
+<body>
+<h1>Setting</h1>
+<form action="/save" th:object="${setting}" method="post" novalidate="novalidate">
+  <table>
+    <tr>
+      <th>Languages</th>
+      <th><select th:field="*{languages}">
+        <option th:value="*{languages}" hidden th:utext="*{languages}" selected></option>
+        <option value="English">English</option>
+        <option value="Vietnamese">Vietnamese</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Chinese">Chinese</option>
+      </select></th>
+    </tr>
+    <tr>
+      <th>Page size:</th>
+      <td>Show <select th:field="*{size}">
+        <option th:value="*{size}" hidden th:utext="*{size}" selected></option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select> email per page</td>
+    </tr>
+    <tr>
+      <th>Spam filter:</th>
+      <td><input type="checkbox" th:value="*{spam}" th:field="*{spam}"> Enables spam filter</td>
+    </tr>
+    <tr>
+      <th>Signature</th>
+      <th><textarea th:field="*{signature}" cols="30" rows="10" th:value="*{signature}" th:utext="*{signature}"></textarea></th>
+    </tr>
+    <tr>
+      <td>
+        <button type="submit">Update</button>
+      </td>
+      <td>
+        <button type="reset">Cancel</button>
+      </td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
